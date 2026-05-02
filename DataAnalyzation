@@ -1,7 +1,7 @@
 import scipy.io
 import pandas as pd
 
-file_path = r'C:\Users\avita\OneDrive\Desktop\BCICIV_calib_ds1a.mat'
+file_path = r'C:\Users\avita\OneDrive\Desktop\BCICIV_calib_ds1a.mat' #how do I do this in github?
 # hi itamar, I chose the first file in the data and copied its path.
 # then I googled how to load the file in here and put it in pd format
 # then I printed the data(only first five rows because there are hundreds of thousands
