@@ -1,13 +1,12 @@
 import scipy.io
 import pandas as pd
 
-file_path = r'C:\Users\avita\OneDrive\Desktop\BCICIV_calib_ds1a.mat' #how do I do this in github?
 # hi itamar, I chose the first file in the data and copied its path.
 # then I googled how to load the file in here and put it in pd format
 # then I printed the data(only first five rows because there are hundreds of thousands
 # with the mean, standard deviation, lowest signal(and biggest)
 # and number of signals. after that I calculated the time of sampling and wrote
-# the number of electrodes. but I dont know if it'll work in github
+# the number of electrodes. but I dont know if it'll work in github.
 # oh and I also extracted the names of the electrodes which I found out
 # are just:
 # F = Frontal (Front of the head)
@@ -17,6 +16,10 @@ file_path = r'C:\Users\avita\OneDrive\Desktop\BCICIV_calib_ds1a.mat' #how do I d
 # z = Zero (The very midline of the head)
 # and put them at the top as channel_names
 # and finally I printed the number of electrodes
+
+file_path = r'C:\Users\avita\OneDrive\Desktop\BCICIV_calib_ds1a.mat' #how do I do this in github? If you want to check this works
+# the replace the thing in '' with your file path for BCICIV_1_mat
+
 file_data = scipy.io.loadmat(file_path)
 
 signals = file_data['cnt'] # getting the actual data
