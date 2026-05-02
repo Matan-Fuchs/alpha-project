@@ -1,0 +1,40 @@
+import scipy.io
+import pandas as pd
+
+file_path = r'C:\Users\avita\OneDrive\Desktop\BCICIV_calib_ds1a.mat'
+# hi itamar, I chose the first file in the data and copied its path.
+# then I googled how to load the file in here and put it in pd format
+# then I printed the data(only first five rows because there are hundreds of thousands
+# with the mean, standard deviation, lowest signal(and biggest)
+# and number of signals. after that I calculated the time of sampling and wrote
+# the number of electrodes. but I dont know if it'll work in github
+# oh and I also extracted the names of the electrodes which I found out
+# are just:
+# F = Frontal (Front of the head)
+# C = Central (Top/Middle)
+# P = Parietal (Back/Top)
+# O = Occipital (Back - Vision)
+# z = Zero (The very midline of the head)
+# and put them at the top as channel_names
+# and finally I printed the number of electrodes
+file_data = scipy.io.loadmat(file_path)
+
+signals = file_data['cnt'] # getting the actual data
+info = file_data['nfo'][0, 0] # getting channel names
+channel_names = [label[0] for label in info['clab'][0]]
+
+data_in_pandas = pd.DataFrame(signals, columns=channel_names) #put in pandas
+
+print(data_in_pandas.head()) #the first five signals
+
+print(data_in_pandas.describe()) # mean max and stuff
+
+frequency_of_observation = info['fs'][0, 0] #length of taking the eeg
+num_of_samples = len(data_in_pandas)
+duration_seconds = num_of_samples / frequency_of_observation
+duration_minutes = duration_seconds / 60
+print(f"sampling duration = {duration_minutes:.1f} minutes")
+
+num_electrodes = len(data_in_pandas.columns) # here I put the num of electrodes
+print("number of electrodes is ")
+print(num_electrodes)
