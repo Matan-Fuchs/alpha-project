@@ -17,8 +17,7 @@ import pandas as pd
 # and put them at the top as channel_names
 # and finally I printed the number of electrodes
 
-file_path = r'C:\Users\avita\OneDrive\Desktop\BCICIV_calib_ds1a.mat' #how do I do this in github? If you want to check this works
-# the replace the thing in '' with your file path for BCICIV_1_mat
+file_path = input("Enter path to BCICIV_calib_ds1a.mat: ") # this way you can use it too
 
 file_data = scipy.io.loadmat(file_path)
 
