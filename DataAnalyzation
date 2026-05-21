@@ -40,3 +40,15 @@ print(f"sampling duration = {duration_minutes:.1f} minutes")
 num_electrodes = len(data_in_pandas.columns) # here I put the num of electrodes
 print("number of electrodes is ")
 print(num_electrodes)
+
+# a check for abnormally large noise in the EEG using a comparison between the standard
+# deviation and the difference between a point and the average:
+def check_for_noise (signal_arr):
+    deltas = (signal_arr - signal_arr.mean()).abs()
+    deltas /= signal_arr.std()
+    noise_amount = (deltas > 4).sum()
+    noise_amount /= num_of_samples
+    noise_amount *= 100 # so now it's the percentage
+    return noise_amount
+print("The percentage of noise in each electrode is: ")
+print (check_for_noise(data_in_pandas))
